@@ -14,20 +14,31 @@ const { NotImplementedError } = require('../extensions/index.js');
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
 
-class Stack {
-  push(el) {
-    this[Object.keys(this).length] = el;
-    return this;
+class Queue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
   }
 
-  pop() {
-    const last = this[Object.keys(this).length - 1];
-    delete this[Object.keys(this).length - 1];
-    return last;
+  getUnderlyingList() {
+    return this.head;
   }
 
-  peek() {
-    return this[Object.keys(this).length - 1];
+  enqueue(value) {
+    const item = new ListNode(value);
+    if (this.head) {
+      this.tail.next = item;
+      this.tail = item; 
+    } else {
+      this.head = item;
+      this.tail = item; 
+    }
+  }
+
+  dequeue() {
+    const removing = this.head.value;
+    this.head = this.head.next;
+    return removing;
   }
 }
 
