@@ -13,22 +13,6 @@ const { NotImplementedError } = require('../extensions/index.js');
  * queue.dequeue(); // returns the top element from queue and deletes it, returns 1
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
-class Stack {
-  constructor() {
-    this.stack = [];
-  }
-  push(element) {
-    this.stack.push(element);
-  }
-
-  pop() {
-    return this.stack.pop();
-  }
-
-  peek() {
-    return this.stack[this.stack.length - 1];
-  }
-}
 
 module.exports = {
   Queue
